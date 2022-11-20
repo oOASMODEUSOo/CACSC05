@@ -5,6 +5,8 @@ from datetime import datetime
 import tkinter.messagebox as tkmessage
 import smtplib
 import random
+import PIL 
+import qrcode
 
 # mydb = sqlc.connect(
 #     host="localhost",
@@ -175,7 +177,78 @@ def Booking():      #booking function list the property in the CLI and that open
     book.mainloop()
 
 def update_Listing():   
-    pass
+    root=Tk()
+    root.title('UPDATE LISTING')
+    root.geometry('720x720+0+0')
+    Frame(root,bd=4,relief=RIDGE,bg='cyan').place(x=0,y=0,width=720,height=720)
+    Label(root,text='UPDATE LISTING ',bd=10,relief=GROOVE,font=('times new roman',40,'bold'),bg='yellow',fg='red').pack(side=TOP,fill=X)
+    
+    #==========================PID====================================
+    Label(root,text='Property ID ',bg='cyan',fg='black',font=('arial',20,'bold')).place(x=30,y=150)
+    prop_ID=StringVar()
+    prop_ID_entry=Entry(root,textvariable=prop_ID,width=25,bg='white').place(x=400,y=160)
+
+    #==========================NAME====================================
+    Label(root,text='Property Name ',bg='cyan',fg='black',font=('arial',20,'bold')).place(x=30,y=230)
+    prop_name=StringVar()
+    prop_name_entry=Entry(root,textvariable=prop_name,width=25,bg='white').place(x=400,y=240)
+   
+    #===========================Prop type.================================
+    Label(root,text='Type',bg='cyan',fg='black',font=('arial',20,'bold')).place(x=30,y=310)
+    prop_list=(' ', 'NO CHANGE','Appartment','Villa','Penthouse','Farmhouse')
+    prop_type=StringVar()
+    prop_type_entry=ttk.OptionMenu(root,prop_type,*prop_list).place(x=400,y=315)      
+    # Entry(root,textvariable=prop_type,width=25,bg='white').place(x=400,y=161)
+
+    #==========================BHK====================================
+    Label(root,text='No. of Bedrooms ',bg='cyan',fg='black',font=('arial',20,'bold')).place(x=30,y=390)
+    bhk_list=(' ','0','1','2','3','4','5','6','7','8','9','10')
+    bhk=IntVar()
+    bhk_entry=ttk.OptionMenu(root,bhk,*bhk_list).place(x=400,y=395)
+
+    #==========================ADDRESS====================================
+    Label(root,text='Address ',bg='cyan',fg='black',font=('arial',20,'bold')).place(x=30,y=470)
+    prop_address=StringVar()
+    prop_address_entry=Entry(root,textvariable=prop_address,width=25,bg='white').place(x=400,y=480)
+
+    #==========================RENT====================================
+    Label(root,text='Rent ',bg='cyan',fg='black',font=('arial',20,'bold')).place(x=30,y=550)
+    prop_rent=IntVar()
+    prop_rent_entry=Entry(root,textvariable=prop_rent,width=25,bg='white').place(x=400,y=560)
+    
+    def do_it():                #WORK HERE
+        id=str(prop_ID.get()).upper()
+        nm=str(prop_name.get()).upper()
+        pt=str(prop_type.get()).upper()
+        bh=int(bhk.get())
+        add=str(prop_address.get()).upper()
+        rt=int(prop_rent.get())
+        if nm != '0':
+            # cur.execute("update prop set prop_name=('{}') where prop_id=('{}') ".format(nm,id))
+            # con.commit()
+            pass
+        if pt != 'NO CHANGE':
+            # cur.execute("update prop set prop_type=('{}') where prop_id=('{}') ".format(pt,id))
+            # con.commit()
+            pass
+        if bh != '0':
+            # cur.execute("update prop set bhk=('{}') where prop_id=('{}') ".format(bh,id))
+            # con.commit()
+            pass
+        if add != '0':
+            # cur.execute("update prop set prop_add=('{}') where prop_id=('{}') ".format(add,id))
+            # con.commit()
+            pass
+        if rt != 0:
+            # cur.execute("update prop set prop_rent=('{}') where prop_id=('{}') ".format(rt,id))
+            # con.commit()
+            pass
+        
+        print(' '*242+'Updation Successful...')           
+    
+    Button(root,text='UPDATE',bd=10,relief=GROOVE,bg='lightblue',fg='navy blue',font=('times new roman',40,'bold'),command=do_it).pack(side=BOTTOM, fill=X)
+    
+    root.mainloop()
 
 def update_Booking():
     pass
