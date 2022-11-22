@@ -2,10 +2,10 @@ from tkinter import *
 from tkinter import ttk
 
 def property_list():
-    root = Tk()
-    root.geometry("720x720")
-    root.title("Property Listing")
-    tree_frame = Frame(root)
+    pl = Tk()
+    pl.geometry("720x720")
+    pl.title("Property Listing")
+    tree_frame = Frame(pl)
     tree_frame.pack(pady=10)
     tree_scrollbar=Scrollbar(tree_frame, )
     tree_scrollbar.pack(side="right", fill=Y)
@@ -31,15 +31,15 @@ def property_list():
     my_tree.heading("Address", text="Address", anchor="w")
     my_tree.heading("Rent", text="Rent", anchor="w")
 
-    fetchdata = f"select pid, prop_name, BHK, prop_add, prop_rent from property"
-    mycur.execute(fetchdata)
-    result_table_data = mycur.fetchall()
+    fetchdata = f"select pid, prop_name, BHK, prop_add, prop_rent from prop"
+    # mycur.execute(fetchdata)
+    # result_table_data = mycur.fetchall()
 
     count = 0
     for rec in result_table_data:
         my_tree.insert(parent='', index='end', iid=count, text="", values=(rec[0], rec[1], rec[2], rec[3], rec[4]))
         count += 1
 
-    root.mainloop()
+    pl.mainloop()
 
 property_list()
