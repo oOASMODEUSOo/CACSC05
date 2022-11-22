@@ -167,6 +167,8 @@ def Booking():      #booking function list the property in the CLI and that open
             address = cust_Add.get()
             idNumber = cust_id.get()
 
+            #cur.execute("insert into customer value()")
+            #con.commit()
 
 
         Button(customer_details,text='Confirm Book',bd=10,relief=GROOVE,bg='lightblue',fg='navy blue',font=('times new roman',40,'bold'), command=customer_details).pack(side=BOTTOM, fill=X)
@@ -298,7 +300,31 @@ def delete_booking():
     delete_booking_window.mainloop()
 
 def aggregate():
-    pass
+    agg = Tk()
+    agg.geometry("720x400+0+0")
+    agg.title("Perform aggregate functions")
+    agg.iconbitmap("prop.ico")
+
+    def count_something_1():
+        pass
+
+    def count_something_2():
+        pass
+
+    def count_something_3():
+        pass
+    
+    Label(agg, text="Perform aggregate function", bg='cyan',fg='black',font=('arial',20,'bold')).pack(side=TOP, fill=X)
+    butt1 = Button(agg, text='Button 1', bd=10,relief=GROOVE,bg='lightblue',fg='navy blue',font=('times new roman',40,'bold'), command=count_something_1)
+    butt1.pack(side=TOP, fill=X)
+
+    butt2 = Button(agg, text='Button 2', bd=10,relief=GROOVE,bg='lightblue',fg='navy blue',font=('times new roman',40,'bold'), command=count_something_2)
+    butt2.pack(side=TOP, fill=X)
+
+    butt3 = Button(agg, text='Button 3', bd=10,relief=GROOVE,bg='lightblue',fg='navy blue',font=('times new roman',40,'bold'), command=count_something_3)
+    butt3.pack(side=TOP, fill=X)
+
+    agg.mainloop()
 
 def KILLSWITCH():
     master.destroy()
